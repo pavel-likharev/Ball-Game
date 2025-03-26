@@ -4,15 +4,13 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Ball _ball;
     [SerializeField] private CoinsController _coinsController;
-
     [SerializeField] private float timeForCollectable = 30;
 
     private bool _isGameOver;
 
     private void Start()
     {
-        Debug.Log("Собери за " + timeForCollectable + " секунд " + _coinsController.CoinsAmount + " монеток!");
-        Debug.Log("Время пошло!");
+        PrintStartGameMessage();
     }
 
     private void Update()
@@ -22,6 +20,12 @@ public class GameManager : MonoBehaviour
 
         CheckCoins();
         CheckTime();
+    }
+
+    private void PrintStartGameMessage()
+    {
+        Debug.Log("Собери за " + timeForCollectable + " секунд " + _coinsController.CoinsAmount + " монеток!");
+        Debug.Log("Время пошло!");
     }
 
     private void CheckTime()

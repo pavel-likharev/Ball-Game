@@ -1,19 +1,16 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class MoveController : MonoBehaviour
 {
-    private const string groundLayerName = "Ground";
+    private const string GroundLayerName = "Ground";
 
     [SerializeField] private float _moveForce;
     [SerializeField] private float _jumpForce;
 
     private InputManager _inputManager;
     private Rigidbody _rigidbody;
-    private Vector3 _startPosition;
 
-    private int groundLayerIndex;
-
+    private int _groundLayerIndex;
     private bool _isMoving;
     private bool _isJumping;
 
@@ -24,15 +21,7 @@ public class MoveController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _inputManager = GetComponent<InputManager>();
 
-        groundLayerIndex = LayerMask.NameToLayer(groundLayerName);
-
-        _startPosition = transform.position;
-    }
-
-    private void Start()
-    {
-        _rigidbody.centerOfMass = Vector3.zero;
-        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        _groundLayerIndex = LayerMask.NameToLayer(GroundLayerName);
     }
 
     private void FixedUpdate()
@@ -80,7 +69,7 @@ public class MoveController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == groundLayerIndex)
+        if (collision.gameObject.layer == _groundLayerIndex)
             _isJumping = false;
     }
 }

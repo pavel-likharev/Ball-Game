@@ -6,7 +6,6 @@ public class Rotater : MonoBehaviour
 
     private int _rightSide = 1;
     private int _leftSide = -1;
-
     private int _currentSide;
 
     private void Start()
