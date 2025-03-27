@@ -11,10 +11,10 @@ public class MoveController : MonoBehaviour
     private Rigidbody _rigidbody;
 
     private int _groundLayerIndex;
+
     private bool _isMoving;
     private bool _isJumping;
-
-    [SerializeField] private bool _isDisable;
+    private bool _isDisable;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class MoveController : MonoBehaviour
         }
     }
 
-    public void Stopped()
+    public void Stop()
     {
         _isDisable = true; 
 

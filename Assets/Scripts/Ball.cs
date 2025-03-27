@@ -15,7 +15,8 @@ public class Ball : MonoBehaviour
 
     public void DisableBall()
     {
-        _moveController.Stopped();
+        if (_moveController != null)
+            _moveController.Stop();
     }
 
     private void OnTriggerEnter(Collider other)
